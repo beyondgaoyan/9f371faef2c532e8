@@ -1,0 +1,123 @@
+<extend name="Archive/base_arc"/>
+
+<block name="body">
+    <script>
+        function center_toggle(name) {
+            var show=$('#' + name + '_panel').css('display');
+            $('.center_panel').hide();
+            $('.center_arrow_right').show();
+            $('.center_arrow_bottom').hide()
+            if(show=='none'){
+                $('#' + name + '_panel').show();
+                $('#' + name + '_toggle_right').hide();
+                $('#' + name + '_toggle_bottom').show()
+            }else{
+                $('#' + name + '_toggle_right').show();
+                $('#' + name + '_toggle_bottom').hide()
+            }
+
+        }
+    </script>
+    <div id="center">
+        <div id="center_base">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4 onclick="center_toggle('base')"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;个人档案
+                        <a class="pull-right" id="toggle_base">
+                            编辑
+                            <i id="base_toggle_right" title="展开" class="center_arrow_right" style="display: none"></i>
+                            <i id="base_toggle_bottom" title="收起" class="center_arrow_bottom"></i>
+                        </a>
+
+                    </h4>
+                    <hr class="center_line"/>
+                </div>
+            </div>
+
+            <div class="row center_panel" id="base_panel">
+                            </div>
+        </div>
+        <div id="center_expandinfo">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4 onclick="center_toggle('expand')"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;单身档案
+
+                        <a class="pull-right" id="toggle_expand"
+                                >
+                            编辑
+                            <i id="expand_toggle_right" title="展开" class="center_arrow_right"></i>
+                            <i id="expand_toggle_bottom" title="收起" class="center_arrow_bottom"
+                               style="display: none"></i>
+                        </a>
+                    </h4>
+                    <hr class="center_line"/>
+                </div>
+            </div>
+
+            <div id="expand_panel" class="center_panel" style="display: none">
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="expandinfo_list" class="row expandinfo-list">
+                            <include filse="Config/expandinfo"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="center_avatar">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4 onclick="center_toggle('avatar')"><i class="glyphicon glyphicon-user"></i>&nbsp;创业档案
+                        <a class="pull-right" id="toggle_avatar">
+                            编辑
+                            <i id="avatar_toggle_right" title="展开" class="center_arrow_right"></i>
+                            <i id="avatar_toggle_bottom" title="收起" class="center_arrow_bottom"
+                               style="display: none"></i>
+                        </a>
+                    </h4>
+                    <hr class="center_line"/>
+                    </h4>
+                </div>
+            </div>
+            <div id="avatar_panel" class="center_panel" style="display: none">
+                <include filse="Config/changeavatar"/>
+            </div>
+        </div>
+
+
+        <div id="center_password">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4 onclick="center_toggle('password')"><i class="glyphicon glyphicon-lock"></i>&nbsp;职业档案
+                        <a class="pull-right" id="toggle_password"
+                                >
+                            编辑
+                            <i id="password_toggle_right" title="展开" class="center_arrow_right"></i>
+                            <i id="password_toggle_bottom" title="收起" class="center_arrow_bottom"
+                               style="display: none"></i>
+                        </a>
+                    </h4>
+                    <hr class="center_line"/>
+                    </h4>
+                </div>
+            </div>
+            <div id="password_panel" class="center_panel" style="display: none">
+                <include fisle="Config/changepassword"/>
+            </div>
+        </div>
+
+    </div>
+<neq name="tab" value="">
+    <script>
+        $(function () {
+
+            center_toggle("{$tab}");
+        })
+    </script>
+</neq>
+
+</block>

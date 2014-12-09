@@ -27,7 +27,28 @@ abstract class Controller {
      * @access protected
      */      
     protected $config   =   array();
+    /*ThinkOX新增部分*/
+    /**seo参数  陈一枭  ThinkOX
+     * @var array
+     */
+    public $_seo=array();
 
+    public function setTitle($title){
+        $this->_seo['title']=     $title;
+        $this->assign('seo',$this->_seo);
+    }
+    public function setKeywords($keywords){
+        $this->_seo['keywords']=     $keywords;
+        $this->assign('seo',$this->_seo);
+    }
+    public function setDescription($description){
+        $this->_seo['description']=     $description;
+        $this->assign('seo',$this->_seo);
+    }
+
+
+
+    /*ThinkOX新增部分end*/
    /**
      * 架构函数 取得模板对象实例
      * @access public
