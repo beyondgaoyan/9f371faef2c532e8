@@ -19,7 +19,21 @@ class ArchiveController extends BaseController
         $this->setTitle('编辑资料');
 
     }
+   
 
+    public function index_friend(){
+        $this->setTitle('编辑资料>单身档案');
+        $this->display();
+    }
+    public function index_company(){
+        $this->setTitle('编辑资料>创业档案');
+        $this->display();
+    }
+    public function index_work(){
+        $this->setTitle('编辑资料>职业档案');
+        $this->display();
+    }
+     /*编辑个人档案 by deblue*/
     public function index($uid = null, $tab = '', $nickname = '', $sex = 0, $email = '', $signature = ''
         , $community = 0, $district = 0, $city = 0, $province = 0)
     {
@@ -123,6 +137,7 @@ class ArchiveController extends BaseController
 
     /**获取用户扩展信息
      * @param null $uid
+     * @author 郑钟良<zzl@ourstu.com>
      */
     public function getExpandInfo($uid = null)
     {
@@ -141,6 +156,7 @@ class ArchiveController extends BaseController
     /**显示某一扩展分组信息
      * @param null $profile_group_id
      * @param null $uid
+     * @author 郑钟良<zzl@ourstu.com>
      */
     public function showExpandInfo($profile_group_id = null, $uid = null)
     {
@@ -159,6 +175,7 @@ class ArchiveController extends BaseController
     }
 
     /**修改用户扩展信息
+     * @author 郑钟良<zzl@ourstu.com>
      */
     public function edit_expandinfo($profile_group_id)
     {
@@ -261,6 +278,7 @@ class ArchiveController extends BaseController
     /**input类型验证
      * @param $data
      * @return mixed
+     * @author 郑钟良<zzl@ourstu.com>
      */
     function _checkInput($data)
     {
@@ -320,6 +338,7 @@ class ArchiveController extends BaseController
     /**处理$validation
      * @param $validation
      * @return mixed
+     * @author 郑钟良<zzl@ourstu.com>
      */
     function _getValidation($validation)
     {
@@ -342,6 +361,7 @@ class ArchiveController extends BaseController
     /**分组下的字段信息及相应内容
      * @param null $id 扩展分组id
      * @param null $uid
+     * @author 郑钟良<zzl@ourstu.com>
      */
     public function _info_list($id = null, $uid = null)
     {
@@ -380,6 +400,7 @@ class ArchiveController extends BaseController
 
     /**扩展信息分组列表获取
      * @return mixed
+     * @author 郑钟良<zzl@ourstu.com>
      */
     public function _profile_group_list($uid = null)
     {
@@ -474,6 +495,4 @@ class ArchiveController extends BaseController
             $this->error('该邮箱已被人使用。');
         }
     }
-
-
 }
