@@ -119,7 +119,7 @@ class UserController extends HomeController
                         $html = '';
                         $html = uc_user_synlogin($ref['uc_uid']);
                     }
-                    $this->success($html, get_nav_url(C('AFTER_LOGIN_JUMP_URL')));
+                    $this->success($html, "http://115.28.90.117/superindex/");
                 } else {
                     $this->error($Member->getError());
                 }

@@ -35,7 +35,7 @@ class ArchiveController extends BaseController
     }
      /*编辑个人档案 by deblue*/
     public function index($uid = null, $tab = '', $nickname = '', $sex = 0, $email = '', $signature = ''
-        , $community = 0, $district = 0, $city = 0, $province = 0)
+        , $community = 0, $district = 0, $city = 0, $province = 0,$nation='')
     {
 
         if (IS_POST) {
@@ -47,7 +47,7 @@ class ArchiveController extends BaseController
             $city = intval(trim($city));
             $community = intval(trim($community));
             $district = intval(trim($district));
-
+            $nation=op_t(trim($nation));
 
             $this->checkNickname($nickname);
             $this->checkSex($sex);
@@ -64,13 +64,14 @@ class ArchiveController extends BaseController
             $user['sex'] = intval($sex);
             $user['signature'] = $signature;
             $user['uid'] = get_uid();
+            $user['nation'] = $nation;
 
             $rs_member = D('Home/Member')->save($user);
-
+            echo D('Home/Member')->getLastSql();exit;
             $ucuser['id'] = get_uid();
             $ucuser['email'] = $email;
             $rs_ucmember = D('UcenterMember')->save($ucuser);
-            clean_query_user_cache(get_uid(), array('nickname', 'sex', 'signature', 'email', 'pos_province', 'pos_city', 'pos_district', 'pos_community'));
+            clean_query_user_cache(get_uid(), array('nickname', 'sex', 'signature', 'pos_province', 'pos_city', 'pos_district', 'pos_community','nation'));
 
             //TODO tox 清空缓存
             if ($rs_member || $rs_ucmember) {
